@@ -16,14 +16,10 @@ app.use(express.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-
- /* app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  }); */
 }
 
 // Define API routes here
-/*  GET REQUEST */
+/*  POST REQUEST */
 app.post('/api/books', async (req, res) => {
     let searchQuery = req.body.searching;
     const googleConfig = process.env.GOOGLE_BOOKS;
