@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3001;
 const axios = require('axios');
@@ -26,6 +27,12 @@ app.post('/api/books', async (req, res) => {
     let response = await axios(`https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&key=${googleConfig}`);
     let data = await response;
     res.send(data.data);
+});
+
+// Send every other request to the React app
+// Define any API routes before this runs
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 
