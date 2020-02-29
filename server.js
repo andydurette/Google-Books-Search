@@ -15,11 +15,9 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Connect to Mongo DB
-mongoose.connect(process.env.MONGO_URI);
-
+mongoose.connect(process.env.MONGODB_URI,{useUnifiedTopology: true, useNewUrlParser: true});
 
 // Define API routes here
-require('./routes/api-routes')(app);
 
 /*  POST REQUEST */
 app.post('/api/books', async (req, res) => {
