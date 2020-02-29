@@ -1,9 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
-const app = express();
 const PORT = process.env.PORT || 3001;
 const axios = require('axios');
+const app = express();
+
+// Config
 require('dotenv/config');
 
 // Define middleware here
