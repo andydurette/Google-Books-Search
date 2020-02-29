@@ -5,7 +5,7 @@ const app = express();
 const axios = require('axios');
 require('dotenv/config');
 
-const dbConfig = process.env.MONGODB_URI;
+//const dbConfig = process.env.MONGODB_URI;
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -16,6 +16,10 @@ app.use(express.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
 }
 
 // Define API routes here
@@ -25,7 +29,6 @@ app.post('/api/books', async (req, res) => {
     const googleConfig = process.env.GOOGLE_BOOKS;
     let response = await axios(`https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&key=${googleConfig}`);
     let data = await response;
-    //console.log(data.data);
     res.send(data.data);
 });
 
