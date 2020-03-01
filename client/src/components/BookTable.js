@@ -7,6 +7,33 @@ const BookTable = () => {
   const {bookData, fetchData} = useContext(AppContext);
   let [fetching/*, setFetching*/] =  fetchData;
 
+  const API = {
+    async saveBooks(id) {
+
+      let idInfo = bookData[0].items.filter(data => data.id === id);
+
+      let idInfopass = {
+        id: idInfo[0].id,
+        title: idInfo[0].volumeInfo.title,
+        description: idInfo[0].volumeInfo.description,
+        authors: idInfo[0].volumeInfo.authors,
+        imgUrl: idInfo[0].volumeInfo.imageLinks.thumbnail,
+        linkUrl: idInfo[0].volumeInfo.infoLink,
+      }
+
+      //console.log(idInfopass);
+
+        const res = await fetch("/api/saveBooks", {
+        method: "POST",
+        body: JSON.stringify(idInfopass),
+        headers: { "Content-Type": "application/json" }
+        });
+
+        const json = await res;
+        console.log(json);
+      }
+    }
+
   return(
     <section id="searchedBooks">
       {fetching === false ?  
@@ -28,7 +55,7 @@ const BookTable = () => {
                     window.open(book.volumeInfo.infoLink);
                     }}>View
                   </button>
-                  <button onClick={() => console.log("saved")}>Save</button>
+                  <button data-id={book.id} onClick={(e) => API.saveBooks(e.target.getAttribute("data-id"))}>Save</button>
                 </div>
                 <div>{ (book.volumeInfo.imageLinks ? 
                 <img src={book.volumeInfo.imageLinks.thumbnail} alt="book.volumeInfo.title"/>
