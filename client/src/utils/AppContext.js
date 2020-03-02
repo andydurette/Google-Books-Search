@@ -6,6 +6,8 @@ export const AppProvider = props => {
 
 //Initially data called from API
 const [books, setBooks] = useState({}); 
+// Saved book data
+const [savedBooks, setSavedBooks] = useState('');
 //State check to see if it's done being called
 const [fetching, setFetching] = useState(false); 
 // Set search data
@@ -14,7 +16,8 @@ const [searching, setSearching] = useState("");
 
   return(
     <AppContext.Provider value={{ 
-      bookData: [books, setBooks], 
+      bookData: [books, setBooks],
+      savedBookData: [savedBooks, setSavedBooks],
       fetchData: [fetching, setFetching], 
       search: [searching, setSearching], 
       }}>
