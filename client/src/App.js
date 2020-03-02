@@ -5,7 +5,6 @@ import Nav from './components/Nav';
 import Home from './components/Home';
 import SavedBooks from './components/SavedBooks';
 import MessageModal from './components/MessageModal';
-import Footer from './components/Footer';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
         </Switch>
         </section>
         <MessageModal/>
-        <Footer/>
       </div>
       </Router>
     </AppProvider> 
