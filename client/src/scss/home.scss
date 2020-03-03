@@ -59,6 +59,7 @@
     border-radius:3px;
     padding: 5px;
     box-sizing:border-box;
+    min-height:130px;
   }
   button{
     background-color: #e05501; /* blue */
@@ -70,7 +71,7 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin:20px 0;
+    margin-top:20px;
     border-radius:3px;
   }
   button:hover{
