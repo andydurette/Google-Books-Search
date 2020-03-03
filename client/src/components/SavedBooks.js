@@ -17,7 +17,6 @@ let [modalCopyState, setModalCopyState] =  modalCopy;
     async savedBooks() {
       const res = await fetch(`/api/savedBooks`);
       const json = await res.json();
-     // console.log(json)
       setSavedBooks( savedBooks = json);
     },
     async removeBook(id) {
@@ -32,7 +31,6 @@ let [modalCopyState, setModalCopyState] =  modalCopy;
         });
 
         const json = await res;
-        console.log(json);
 
         if(json.status === 200){
           setModalState( modalState = "");
