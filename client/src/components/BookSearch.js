@@ -16,7 +16,10 @@ const BookSearch = () => {
   const API = {
 
     async booksCall(e) {
-      e.preventDefault();
+      if(e){
+        e.preventDefault();
+      }
+      
 
       if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
         e.target.querySelector("input").blur();
